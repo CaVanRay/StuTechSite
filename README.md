@@ -29,73 +29,73 @@ To-do:
 
 ### Phase 3: Improve the scheduling application
 To-do:
-    - [ ] Highlight the currently active employee shifts.
-    - [ ] Visually distinguish upcoming shifts from completed shifts.
-    - [ ] Add a countdown until the next shift begins.
-    - [ ] Display the number of employees currently working.
-    - [ ] Add a more obvious indication when nobody is scheduled.
-    - [ ] Display the current day prominently.
-    - [ ] Improve the schedule timeline's readability.
-    - [ ] Add a configurable rotation interval.
-    - [ ] Avoid rotating pages when there are six or fewer employees.
-    - [ ] Add a configurable refresh interval.
+- [ ] Highlight the currently active employee shifts.
+- [ ] Visually distinguish upcoming shifts from completed shifts.
+- [ ] Add a countdown until the next shift begins.
+- [ ] Display the number of employees currently working.
+- [ ] Add a more obvious indication when nobody is scheduled.
+- [ ] Display the current day prominently.
+- [ ] Improve the schedule timeline's readability.
+- [ ] Add a configurable rotation interval.
+- [ ] Avoid rotating pages when there are six or fewer employees.
+- [ ] Add a configurable refresh interval.
 
 ---
 
 ### Phase 4: Reliability and automation
 To-do:
-    - [ ] Add error handling for failed weather API requests.
-    - [ ] Add error handling for missing roster.js.
-    - [ ] Display the last successful roster update time.
-    - [ ] Display the last successful weather update time.
-    - [ ] Make automatic page refresh configurable.
-    - [ ] Prevent overlapping refresh operations.
-    - [ ] Verify the generated roster file is valid before replacing the existing one.
-    - [ ] Log PowerShell execution errors.
-    - [ ] Ensure Excel processes are properly closed after script execution.
-    - [ ] Add a fallback if the internet connection goes down.
+- [ ] Add error handling for failed weather API requests.
+- [ ] Add error handling for missing roster.js.
+- [ ] Display the last successful roster update time.
+- [ ] Display the last successful weather update time.
+- [ ] Make automatic page refresh configurable.
+- [ ] Prevent overlapping refresh operations.
+- [ ] Verify the generated roster file is valid before replacing the existing one.
+- [ ] Log PowerShell execution errors.
+- [ ] Ensure Excel processes are properly closed after script execution.
+- [ ] Add a fallback if the internet connection goes down.
 
 ---
 
 ### Phase 5: Testing and validation
 To-do:
-    - [ ] Test every weekday's schedule.
-    - [ ] Test employees with multiple shifts in one day.
-    - [ ] Test employees with overlapping shifts.
-    - [ ] Test days with no scheduled employees.
-    - [ ] Test invalid Excel entries.
-    - [ ] Test missing Excel worksheets.
-    - [ ] Test missing or corrupted roster files.
-    - [ ] Test the display at different screen resolutions.
-    - [ ] Test the application after a browser refresh.
-    - [ ] Test the application after the computer restarts.
+- [ ] Test every weekday's schedule.
+- [ ] Test employees with multiple shifts in one day.
+- [ ] Test employees with overlapping shifts.
+- [ ] Test days with no scheduled employees.
+- [ ] Test invalid Excel entries.
+- [ ] Test missing Excel worksheets.
+- [ ] Test missing or corrupted roster files.
+- [ ] Test the display at different screen resolutions.
+- [ ] Test the application after a browser refresh.
+- [ ] Test the application after the computer restarts.
 
 ---
 
 ### Phase 6: Documentation and deployment
 To-do:
-    - [ ] Create a README explaining the project.
-    - [ ] Document how to update the Excel schedule.
-    - [ ] Document how to execute Update-Roster.ps1.
-    - [ ] Document where the webpage is hosted.
-    - [ ] Document how the display launches the webpage.
-    - [ ] Document how to troubleshoot common problems.
-    - [ ] Create a backup of the working version before deployment.
-    - [ ] Document dependencies (Excel, PowerShell, browser, internet access).
+- [ ] Create a README explaining the project.
+- [ ] Document how to update the Excel schedule.
+- [ ] Document how to execute Update-Roster.ps1.
+- [ ] Document where the webpage is hosted.
+- [ ] Document how the display launches the webpage.
+- [ ] Document how to troubleshoot common problems.
+- [ ] Create a backup of the working version before deployment.
+- [ ] Document dependencies (Excel, PowerShell, browser, internet access).
 
 ---
 
 ### Future feature ideas:
 
-    1. Improved visual dashboard
-        - Add a more polished display with current staffing, upcoming shifts, and a clearer timeline.
+Improved visual dashboard
+    - Add a more polished display with current staffing, upcoming shifts, and a clearer timeline.
 
-    2. Weekly schedule view
-        - Allow the display to show the entire week's schedule instead of only today's shifts.
+Weekly schedule view
+    - Allow the display to show the entire week's schedule instead of only today's shifts.
 
-    3. Shift countdown
-        - Show things like "Justin starts in 15 minutes" or "2 employees currently working."
+Shift countdown
+    - Show things like "Justin starts in 15 minutes" or "2 employees currently working."
 
 
-    4. Application health monitoring
-        - Show whether roster data loaded successfully, when it was last updated, and whether external services are available.
+Application health monitoring
+    - Show whether roster data loaded successfully, when it was last updated, and whether external services are available.
