@@ -1,5 +1,10 @@
 # This is a website for displaying the student techs weekly schedule as well as who is currently in-office.
 ## Nic got an AI to generate a prototype for how it needs to look but it needs some cleaning up
+
+<img width="1126" height="1079" alt="image" src="https://github.com/user-attachments/assets/5d6a4fce-355d-4835-a032-17b2ab8722b5" /> 
+
+<img width="1128" height="1078" alt="image" src="https://github.com/user-attachments/assets/e06a2930-ed11-4751-bfc4-9314e94e2b90" />
+
 ---
 ### Phase 1: Project organization and cleanup
 To-do:
