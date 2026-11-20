@@ -1,1 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Student Tech Schedule</title>
+
+    <style>
+        /* =========================================
+           BASE STYLES
+        ========================================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #ebe9e4;
+            color: #251d20;
+            font: clamp(16px, 2.4vmin, 32px)/1.35 Arial, sans-serif;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: auto;
+            background: #fbfaf7;
+            min-height: 100vh;
+            padding: 4%;
+        }
+
+        header {
+            background: #541e30;
+            color: white;
+            border-radius: 1em;
+            padding: 1.5em;
+        }
+
+        small,
+        label {
+            font-size: .7em;
+            letter-spacing: .09em;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        h1 {
+            font: normal 2.7em/1 Georgia;
+            margin: .4em 0;
+        }
+
+        #clock {
+            font-size: 2em;
+            font-variant-numeric: tabular-nums;
+        }
+
+        #weather {
+            float: right;
+            margin-top: 1em;
+        }
+
+        section {
+            padding: 1em 0;
+            border-bottom: 1px solid #cdc6c5;
+        }
+
+        h2 {
+            font: normal 1.65em Georgia;
+            margin: .25em 0 .6em;
+        }
+
+        #current {
+            font-weight: bold;
+            color: #541e30;
+        }
+
+        .row {
+            padding: .7em 0;
+            border-top: 1px solid #dfdad6;
+        }
+
+        .track {
+            height: .45em;
+            background: #eeeae5;
+            position: relative;
+            border-radius: 1em;
+            margin-top: .4em;
+        }
+
+        .bar {
+            position: absolute;
+            background: #955669;
+            height: 100%;
+            border-radius: 1em;
+        }
+
+        .times {
+            float: right;
+            color: #554b50;
+        }
+
+        .axis,
+        footer {
+            display: flex;
+            justify-content: space-between;
+            color: #70636a;
+            font-size: .78em;
+        }
+
+        footer {
+            padding-top: 1em;
+        }
+
+        p {
+            margin: .4em 0;
+        }
+
+        @media (max-width: 520px) {
+            .times {
+                float: none;
+                display: block;
+            }
+        }
+
+
+        /* =========================================
+           OVERRIDDEN / UPDATED STYLES
+        ========================================= */
+
+        main {
+            background: white;
+        }
+
+        header {
+            background: #500000;
+        }
+
+        h1 {
+            font: bold 2.45em/1.06 Georgia;
+        }
+
+        #current {
+            color: #500000;
+            font-size: 1.3em;
+        }
+
+        section {
+            border-color: #9d8787;
+        }
+
+        .row {
+            display: flex;
+            align-items: baseline;
+            gap: .7em;
+            padding: .86em 0;
+            border-top: 2px solid #d5c7c7;
+        }
+
+        .row > b {
+            width: 22%;
+            flex-shrink: 0;
+            font-size: 1.18em;
+        }
+
+        .periods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .4em;
+        }
+
+        .period {
+            display: inline-block;
+            background: #500000;
+            color: white;
+            font-size: 1.03em;
+            font-weight: bold;
+            padding: .32em .55em;
+            border-radius: .22em;
+            white-space: nowrap;
+            font-variant-numeric: tabular-nums;
+        }
+
+        footer {
+            color: #453a3a;
+        }
+
+        @media (max-width: 540px) {
+            .row {
+                display: block;
+            }
+
+            .periods {
+                margin-top: .3em;
+            }
+        }
+
+
+        /* =========================================
+           SCHEDULE TIMELINE STYLES
+        ========================================= */
+
+        #hours {
+            display: flex;
+            justify-content: space-between;
+            color: #500000;
+            font-weight: bold;
+            font-size: .78em;
+        }
+
+        .row {
+            display: block;
+            padding: .65em 0;
+        }
+
+        .rowhead {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: .6em;
+        }
+
+        .rowhead > b {
+            font-size: 1.22em;
+        }
+
+        .period {
+            background: transparent;
+            color: #500000;
+            padding: 0;
+            font-size: .98em;
+        }
+
+        .period + .period:before {
+            content: " / ";
+            color: #866b6b;
+        }
+
+        .track {
+            height: 1em;
+            background-color: #f2e9e9;
+            background-image: linear-gradient(
+                to right,
+                #c5acad 2px,
+                transparent 2px
+            );
+            border-radius: .18em;
+            overflow: hidden;
+            margin-top: .3em;
+        }
+
+        .bar {
+            background: #500000;
+            border-radius: .16em;
+        }
+
+        #hours span:last-child {
+            text-align: right;
+        }
+
+        @media (max-width: 680px) {
+            .rowhead {
+                display: block;
+            }
+
+            .periods {
+                margin-top: .15em;
+            }
+
+            #hours {
+                font-size: .7em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================================
+         PAGE CONTENT
+    ========================================= -->
+
+    <main>
+
+        <header>
+            <small>University Libraries &nbsp; / &nbsp; Help desk</small>
+
+            <h1>Student Tech Schedule</h1>
+
+            <p id="date"></p>
+
+            <span id="weather">College Station</span>
+
+            <b id="clock"></b>
+        </header>
+
+
+        <!-- CURRENT SCHEDULE INFORMATION -->
+
+        <section>
+            <label>Scheduled now</label>
+
+            <p id="current"></p>
+
+            <p id="next"></p>
+        </section>
+
+
+        <!-- DAILY SHIFT INFORMATION -->
+
+        <section>
+            <h2>Today’s shifts</h2>
+
+            <div id="hours"></div>
+
+            <div id="rows"></div>
+        </section>
+
+
+        <!-- PAGE FOOTER -->
+
+        <footer>
+            <span id="status">Sample roster</span>
+
+            <span id="page"></span>
+        </footer>
+
+    </main>
+
+
+    <!-- EXTERNAL ROSTER DATA -->
+
+    <script src="roster.js"></script>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================= -->
+
+    <script>
+
+        /* =========================================
+           GLOBAL VARIABLES
+        ========================================= */
+
+        var page = 0;
+        var feed = null;
+
+
+        /* =========================================
+           HELPER FUNCTIONS
+        ========================================= */
+
+        // Get an HTML element by its ID.
+        function el(id) {
+            return document.getElementById(id);
+        }
+
+
+        // Format a date using the Central time zone.
+        function local(d, opts) {
+            return d.toLocaleString(
+                'en-US',
+                Object.assign(
+                    { timeZone: 'America/Chicago' },
+                    opts
+                )
+            );
+        }
+
+
+        // Generate a date string in YYYY-MM-DD format.
+        function day(d) {
+            return ['year', 'month', 'day']
+                .map(function(k) {
+                    var o = {};
+
+                    o[k] = k === 'year'
+                        ? 'numeric'
+                        : '2-digit';
+
+                    return local(d, o);
+                })
+                .join('-');
+        }
+
+
+        // Convert minutes after midnight into a readable time.
+        function fmt(n) {
+            var h = Math.floor(n / 60);
+
+            return (
+                (h % 12 || 12) +
+                ':' +
+                ('0' + n % 60).slice(-2) +
+                (h < 12 ? ' AM' : ' PM')
+            );
+        }
+
+
+        // Create an HTML element with a class and text.
+        function node(tag, cls, txt) {
+            var n = document.createElement(tag);
+
+            n.className = cls;
+            n.textContent = txt || '';
+
+            return n;
+        }
+
+
+        /* =========================================
+           SCHEDULE RENDERING
+        ========================================= */
+
+        function render() {
+
+            // Get current date and time.
+            var d = new Date();
+
+            var t = local(d, {
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false
+            }).split(':');
+
+
+            // Convert current time into minutes after midnight.
+            var m = (+t[0] % 24) * 60 + (+t[1]);
+
+
+            // Retrieve today's schedule from the roster.
+            var a = (
+                typeof week === 'undefined'
+                    ? []
+                    : week[local(d, { weekday: 'short' })] || []
+            );
+
+
+            // Update date and clock.
+            el('date').textContent = local(d, {
+                weekday: 'long',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            el('clock').textContent = local(d, {
+                hour: 'numeric',
+                minute: '2-digit'
+            });
+
+
+            // Get unique employee names.
+            var names = Array.from(
+                new Set(
+                    a.map(function(s) {
+                        return s[0];
+                    })
+                )
+            );
+
+
+            // Identify employees currently working.
+            var active = names.filter(function(n) {
+                return a.some(function(s) {
+                    return (
+                        s[0] === n &&
+                        s[1] <= m &&
+                        m < s[2]
+                    );
+                });
+            });
+
+
+            // Find the next upcoming shift.
+            var next = a
+                .filter(function(s) {
+                    return s[1] > m;
+                })
+                .sort(function(x, y) {
+                    return x[1] - y[1];
+                })[0];
+
+
+            // Update current schedule information.
+            el('current').textContent =
+                active.join('   ·   ') ||
+                (
+                    feed && feed.date !== day(d)
+                        ? 'Awaiting today’s roster'
+                        : 'No one scheduled'
+                );
+
+
+            el('next').textContent = next
+                ? 'Next start · ' + next[0] + ' at ' + fmt(next[1])
+                : '';
+
+
+            // Clear existing schedule rows.
+            el('rows').textContent = '';
+
+
+            /* =====================================
+               TIMELINE RANGE CALCULATION
+            ===================================== */
+
+            var start = Math.min.apply(
+                null,
+                [480].concat(
+                    a.map(function(s) {
+                        return Math.floor(s[1] / 60) * 60;
+                    })
+                )
+            );
+
+
+            var end = Math.max.apply(
+                null,
+                [1020].concat(
+                    a.map(function(s) {
+                        return Math.ceil(s[2] / 60) * 60;
+                    })
+                )
+            );
+
+
+            /* =====================================
+               TIMELINE HOUR LABELS
+            ===================================== */
+
+            var scale = el('hours');
+
+            scale.textContent = '';
+
+
+            for (var tick = start; tick <= end; tick += 60) {
+
+                var hour = tick / 60;
+
+                scale.appendChild(
+                    node(
+                        'span',
+                        '',
+                        hour === 12
+                            ? 'Noon'
+                            : String(hour % 12 || 12) +
+                              (
+                                  tick === start || tick === end
+                                      ? (hour < 12 ? ' AM' : ' PM')
+                                      : ''
+                              )
+                    )
+                );
+            }
+
+
+            /* =====================================
+               EMPLOYEE PAGINATION
+            ===================================== */
+
+            var pages = Math.max(
+                1,
+                Math.ceil(names.length / 6)
+            );
+
+
+            names.slice(
+                page % pages * 6,
+                (page % pages + 1) * 6
+            ).forEach(function(name) {
+
+                // Create row elements.
+                var row = node('div', 'row');
+
+                var periods = node('div', 'periods');
+
+                var head = node('div', 'rowhead');
+
+                var track = node('div', 'track');
+
+
+                // Configure timeline background spacing.
+                track.style.backgroundSize =
+                    (6000 / (end - start)) + '% 100%';
+
+
+                // Add employee name.
+                head.appendChild(
+                    node('b', '', name)
+                );
+
+
+                // Find and sort this employee's shifts.
+                a.filter(function(shift) {
+                    return shift[0] === name;
+                })
+                .sort(function(x, y) {
+                    return x[1] - y[1];
+                })
+                .forEach(function(shift) {
+
+                    // Create timeline segment.
+                    var segment = node('span', 'bar');
+
+
+                    // Calculate segment position.
+                    segment.style.left =
+                        (shift[1] - start) * 100 / (end - start) + '%';
+
+
+                    // Calculate segment width.
+                    segment.style.width =
+                        (shift[2] - shift[1]) * 100 / (end - start) + '%';
+
+
+                    // Add segment to timeline.
+                    track.appendChild(segment);
+
+
+                    // Add readable shift times.
+                    periods.appendChild(
+                        node(
+                            'span',
+                            'period',
+                            fmt(shift[1]) + ' – ' + fmt(shift[2])
+                        )
+                    );
+                });
+
+
+                // Assemble employee row.
+                head.appendChild(periods);
+
+                row.appendChild(head);
+
+                row.appendChild(track);
+
+
+                // Add row to schedule.
+                el('rows').appendChild(row);
+            });
+
+
+            // Update pagination indicator.
+            el('page').textContent = pages > 1
+                ? 'Page ' + (page % pages + 1) + ' / ' + pages
+                : '';
+        }
+
+
+        /* =========================================
+           WEATHER INFORMATION
+        ========================================= */
+
+        function weather() {
+
+            fetch(
+                'https://api.open-meteo.com/v1/forecast?latitude=30.62&longitude=-96.34&current=temperature_2m&temperature_unit=fahrenheit'
+            )
+            .then(function(r) {
+                return r.json();
+            })
+            .then(function(x) {
+
+                if (typeof x.current.temperature_2m !== 'number') {
+                    throw Error();
+                }
+
+                el('weather').textContent =
+                    Math.round(x.current.temperature_2m) +
+                    '°F · College Station';
+            })
+            .catch(function() {
+
+                el('weather').textContent =
+                    'Weather unavailable';
+            });
+        }
+
+
+        /* =========================================
+           INITIALIZATION
+        ========================================= */
+
+        // Update roster status.
+        el('status').textContent =
+            typeof week === 'undefined'
+                ? 'Roster file unavailable'
+                : 'Library IT · Daily schedule';
+
+
+        // Initial page rendering.
+        render();
+
+
+        // Initial weather lookup.
+        weather();
+
+
+        // Rotate schedule pages every 15 seconds.
+        setInterval(function() {
+            page++;
+            render();
+        }, 15000);
+
+
+        // Reload the page every 5 minutes.
+        setTimeout(function() {
+            location.reload();
+        }, 300000);
+
+
+        // Refresh weather every 15 minutes.
+        setInterval(weather, 900000);
+
+    </script>
+
+</body>
+</html>
