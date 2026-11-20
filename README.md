@@ -92,15 +92,15 @@ To-do:
 
 ### Future feature ideas:
 
-Improved visual dashboard
+**<ins> Improved visual dashboard </ins>**
     - Add a more polished display with current staffing, upcoming shifts, and a clearer timeline.
 
-Weekly schedule view
+**<ins> Weekly schedule view </ins>**
     - Allow the display to show the entire week's schedule instead of only today's shifts.
 
-Shift countdown
+**<ins> Shift countdown </ins>**
     - Show things like "Justin starts in 15 minutes" or "2 employees currently working."
 
 
-Application health monitoring
+**<ins> Application health monitoring </ins>**
     - Show whether roster data loaded successfully, when it was last updated, and whether external services are available.
