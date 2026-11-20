@@ -1,5 +1,12 @@
-# This is a website for displaying the student techs weekly schedule as well as who is currently in-office.
-## Nic got an AI to generate a prototype for how it needs to look but it needs some cleaning up
+# StuTechSite
+
+A web-based dashboard for displaying the weekly Student Tech schedule, including daily shifts, current staffing, and who is currently in the office.
+
+The current implementation started as an AI-generated prototype created by Nic to establish the desired appearance and functionality. The goal of this project is to clean up, refactor, and expand upon that prototype to create a reliable, maintainable scheduling application.
+
+# Design Reference
+
+The following screenshots represent the intended appearance and general layout of the application. They should be used as a visual reference during development, but the implementation can be improved as needed.
 
 <img width="1126" height="1079" alt="image" src="https://github.com/user-attachments/assets/5d6a4fce-355d-4835-a032-17b2ab8722b5" /> 
 
