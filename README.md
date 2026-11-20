@@ -3,22 +3,22 @@
 
 ### Phase 1: Project organization and cleanup
 To-do:
-    - [ ]  split up the HTML, CSS, & JS into separate files
-    - [ ] Create dedicated css/ and js/ directories.
-    - [ ] Move employee roster data into its own JavaScript file.
-    - [ ] Remove duplicate and overridden CSS declarations.
-    - [ ] Organize JavaScript into logical functions.
-    - [ ] Add descriptive comments where functionality isn't immediately obvious.
-    - [ ] Establish consistent naming conventions for variables, functions, and CSS classes.
+- [ ]  split up the HTML, CSS, & JS into separate files
+- [ ] Create dedicated css/ and js/ directories.
+- [ ] Move employee roster data into its own JavaScript file.
+- [ ] Remove duplicate and overridden CSS declarations.
+- [ ] Organize JavaScript into logical functions.
+- [ ] Add descriptive comments where functionality isn't immediately obvious.
+- [ ] Establish consistent naming conventions for variables, functions, and CSS classes.
 
 
 
 Phase 2: Fix existing code issues
 To-do:
-    - [ ] Fix the time conversion function in PowerShell.
-    - [ ] Initialize $book before entering the try block.
-    - [ ] Add validation for missing or incorrectly formatted Excel data.
-    - [ ] Handle cases where the roster file fails to load.
+- [ ] Fix the time conversion function in PowerShell.
+- [ ] Initialize $book before entering the try block.
+- [ ] Add validation for missing or incorrectly formatted Excel data.
+- [ ] Handle cases where the roster file fails to load.
     - [ ] Remove the unused feed variable or implement its intended functionality.
     - [ ] Handle days with no scheduled employees.
     - [ ] Prevent invalid timeline calculations when no shifts exist.
