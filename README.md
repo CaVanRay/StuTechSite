@@ -1,6 +1,6 @@
 # This is a website for displaying the student techs weekly schedule as well as who is currently in-office.
 ## Nic got an AI to generate a prototype for how it needs to look but it needs some cleaning up
-
+---
 ### Phase 1: Project organization and cleanup
 To-do:
 - [ ]  split up the HTML, CSS, & JS into separate files
@@ -11,23 +11,23 @@ To-do:
 - [ ] Add descriptive comments where functionality isn't immediately obvious.
 - [ ] Establish consistent naming conventions for variables, functions, and CSS classes.
 
+---
 
-
-Phase 2: Fix existing code issues
+### Phase 2: Fix existing code issues
 To-do:
 - [ ] Fix the time conversion function in PowerShell.
 - [ ] Initialize $book before entering the try block.
 - [ ] Add validation for missing or incorrectly formatted Excel data.
 - [ ] Handle cases where the roster file fails to load.
-    - [ ] Remove the unused feed variable or implement its intended functionality.
-    - [ ] Handle days with no scheduled employees.
-    - [ ] Prevent invalid timeline calculations when no shifts exist.
-    - [ ] Verify that the schedule correctly handles shifts crossing noon.
-    - [ ] Make sure the display doesn't show stale schedule information after an update.
+- [ ] Remove the unused feed variable or implement its intended functionality.
+- [ ] Handle days with no scheduled employees.
+- [ ] Prevent invalid timeline calculations when no shifts exist.
+- [ ] Verify that the schedule correctly handles shifts crossing noon.
+- [ ] Make sure the display doesn't show stale schedule information after an update.
 
+---
 
-
-Phase 3: Improve the scheduling application
+### Phase 3: Improve the scheduling application
 To-do:
     - [ ] Highlight the currently active employee shifts.
     - [ ] Visually distinguish upcoming shifts from completed shifts.
@@ -40,9 +40,9 @@ To-do:
     - [ ] Avoid rotating pages when there are six or fewer employees.
     - [ ] Add a configurable refresh interval.
 
+---
 
-
-Phase 4: Reliability and automation
+### Phase 4: Reliability and automation
 To-do:
     - [ ] Add error handling for failed weather API requests.
     - [ ] Add error handling for missing roster.js.
@@ -55,9 +55,9 @@ To-do:
     - [ ] Ensure Excel processes are properly closed after script execution.
     - [ ] Add a fallback if the internet connection goes down.
 
+---
 
-
-Phase 5: Testing and validation
+### Phase 5: Testing and validation
 To-do:
     - [ ] Test every weekday's schedule.
     - [ ] Test employees with multiple shifts in one day.
@@ -70,9 +70,9 @@ To-do:
     - [ ] Test the application after a browser refresh.
     - [ ] Test the application after the computer restarts.
 
+---
 
-
-Phase 6: Documentation and deployment
+### Phase 6: Documentation and deployment
 To-do:
     - [ ] Create a README explaining the project.
     - [ ] Document how to update the Excel schedule.
@@ -83,9 +83,9 @@ To-do:
     - [ ] Create a backup of the working version before deployment.
     - [ ] Document dependencies (Excel, PowerShell, browser, internet access).
 
+---
 
-
-Future feature ideas:
+### Future feature ideas:
 
     1. Improved visual dashboard
         - Add a more polished display with current staffing, upcoming shifts, and a clearer timeline.
