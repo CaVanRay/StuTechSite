@@ -1,6 +1,6 @@
 ## This is a website for displaying the student techs weekly schedule as well as who is currently in-office. ##
 
-Nic got an AI to generate a prototype for how it needs to look but it needs some cleaning up
+## Nic got an AI to generate a prototype for how it needs to look but it needs some cleaning up
 
 Phase 1: Project organization and cleanup
 To-do:
